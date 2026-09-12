@@ -137,6 +137,19 @@
     }
     .btn:hover { opacity: .88; }
     .note { font-size: .92rem; color: var(--muted); }
+    .url-list { margin: 1rem 0 0; }
+    .url-list p { margin: .45rem 0; font-size: .92rem; }
+    .url-list a { word-break: break-all; }
+    .copy-urls {
+      appearance: none; cursor: pointer;
+      margin: 10px 8px 0 0;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px dashed var(--ink);
+      background: transparent;
+      color: var(--ink);
+      font: 650 14px/1 system-ui, sans-serif;
+    }
     footer {
       max-width: 40rem;
       margin: 0 auto;
@@ -311,6 +324,13 @@
             <li>14 дней не выходите из теста. Удалить приложение можно; Leave test — нельзя.</li>
           </ol>
           <p class="note">Бесплатный слой: один человек, вся одиночная карта. Пара и команда — разовые покупки через Play, привязаны к аккаунту Google. Это не диагноз и не кадровый инструмент.</p>
+          <div class="url-list">
+            <p>Страница: <a href="https://ipmgroup.github.io/why-human-design/">https://ipmgroup.github.io/why-human-design/</a></p>
+            <p>Группа: <a href="https://groups.google.com/g/hd_app_testers">https://groups.google.com/g/hd_app_testers</a></p>
+            <p>Тест Play: <a href="https://play.google.com/apps/testing/dev.hdbridge.app">https://play.google.com/apps/testing/dev.hdbridge.app</a></p>
+            <p>Play: <a href="https://play.google.com/store/apps/details?id=dev.hdbridge.app">https://play.google.com/store/apps/details?id=dev.hdbridge.app</a></p>
+            <p>Расширенный режим: <a href="https://ipmgroup.github.io/HD_extension/">https://ipmgroup.github.io/HD_extension/</a></p>
+          </div>
         </div>
         <div data-cta="de" hidden>
           <h2>Tester für Google Play gesucht</h2>
@@ -323,6 +343,13 @@
             <li>14 Tage nicht aus dem Test austreten. Deinstallieren ist in Ordnung; Leave test nicht.</li>
           </ol>
           <p class="note">Kostenlos: eine Person, die ganze Einzelkarte. Paar und Team sind Einmalkäufe über Play, gebunden an das Google-Konto. Keine Diagnose, kein HR-Werkzeug.</p>
+          <div class="url-list">
+            <p>Seite: <a href="https://ipmgroup.github.io/why-human-design/">https://ipmgroup.github.io/why-human-design/</a></p>
+            <p>Gruppe: <a href="https://groups.google.com/g/hd_app_testers">https://groups.google.com/g/hd_app_testers</a></p>
+            <p>Play-Test: <a href="https://play.google.com/apps/testing/dev.hdbridge.app">https://play.google.com/apps/testing/dev.hdbridge.app</a></p>
+            <p>Play: <a href="https://play.google.com/store/apps/details?id=dev.hdbridge.app">https://play.google.com/store/apps/details?id=dev.hdbridge.app</a></p>
+            <p>Erweiterter Modus: <a href="https://ipmgroup.github.io/HD_extension/">https://ipmgroup.github.io/HD_extension/</a></p>
+          </div>
         </div>
         <div data-cta="en" hidden>
           <h2>Google Play testers needed</h2>
@@ -335,8 +362,16 @@
             <li>Do not leave the test for 14 days. Uninstalling is fine; Leave test is not.</li>
           </ol>
           <p class="note">Free: one person, the full single chart. Pair and team are one-time Play purchases, tied to the Google account. Not a diagnosis and not a hiring tool.</p>
+          <div class="url-list">
+            <p>Page: <a href="https://ipmgroup.github.io/why-human-design/">https://ipmgroup.github.io/why-human-design/</a></p>
+            <p>Group: <a href="https://groups.google.com/g/hd_app_testers">https://groups.google.com/g/hd_app_testers</a></p>
+            <p>Play test: <a href="https://play.google.com/apps/testing/dev.hdbridge.app">https://play.google.com/apps/testing/dev.hdbridge.app</a></p>
+            <p>Play: <a href="https://play.google.com/store/apps/details?id=dev.hdbridge.app">https://play.google.com/store/apps/details?id=dev.hdbridge.app</a></p>
+            <p>Extended mode: <a href="https://ipmgroup.github.io/HD_extension/">https://ipmgroup.github.io/HD_extension/</a></p>
+          </div>
         </div>
         <p id="cta-buttons"></p>
+        <button type="button" class="copy-urls" id="copy-urls"></button>
       </section>
     </div>
   </main>
@@ -350,8 +385,10 @@
   <script>
     const LINKS = {
       email: "ipm.grp@googlemail.com",
+      page: "https://ipmgroup.github.io/why-human-design/",
       group: "https://groups.google.com/g/hd_app_testers",
       play: "https://play.google.com/apps/testing/dev.hdbridge.app",
+      store: "https://play.google.com/store/apps/details?id=dev.hdbridge.app",
       extension: "https://ipmgroup.github.io/HD_extension/"
     };
 
@@ -362,7 +399,10 @@
         mail: "Написать разработчику",
         group: "Вступить в группу",
         play: "Стать тестером в Play",
-        extension: "Расширенный режим"
+        store: "Страница в Play",
+        extension: "Расширенный режим",
+        copy: "Скопировать ссылки",
+        copied: "Скопировано"
       },
       de: {
         jump: "Tester",
@@ -370,7 +410,10 @@
         mail: "Entwickler schreiben",
         group: "Gruppe beitreten",
         play: "Play-Tester werden",
-        extension: "Erweiterter Modus"
+        store: "Play-Seite",
+        extension: "Erweiterter Modus",
+        copy: "Links kopieren",
+        copied: "Kopiert"
       },
       en: {
         jump: "Testers",
@@ -378,7 +421,10 @@
         mail: "Email the developer",
         group: "Join the group",
         play: "Become a Play tester",
-        extension: "Extended mode"
+        store: "Play listing",
+        extension: "Extended mode",
+        copy: "Copy links",
+        copied: "Copied"
       }
     };
 
@@ -400,8 +446,11 @@
       bits.push('<a class="btn" href="mailto:' + LINKS.email + '?subject=' + subject + '">' + t.mail + "</a>");
       if (LINKS.group) bits.push('<a class="btn secondary" href="' + LINKS.group + '">' + t.group + "</a>");
       if (LINKS.play) bits.push('<a class="btn secondary" href="' + LINKS.play + '">' + t.play + "</a>");
+      if (LINKS.store) bits.push('<a class="btn secondary" href="' + LINKS.store + '">' + t.store + "</a>");
       if (LINKS.extension) bits.push('<a class="btn secondary" href="' + LINKS.extension + '">' + t.extension + "</a>");
       document.getElementById("cta-buttons").innerHTML = bits.join("");
+      const copyBtn = document.getElementById("copy-urls");
+      if (copyBtn) copyBtn.textContent = t.copy;
     }
 
     function setLang(lang) {
@@ -429,9 +478,27 @@
       history.replaceState(null, "", url);
     }
 
+    function linkBlob() {
+      return [LINKS.page, LINKS.group, LINKS.play, LINKS.store, LINKS.extension].join("\n");
+    }
+
     document.querySelectorAll(".langs button").forEach((b) => {
       b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));
     });
+    const copyBtn = document.getElementById("copy-urls");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const lang = document.documentElement.lang;
+        const t = I18N[lang] || I18N.en;
+        try {
+          await navigator.clipboard.writeText(linkBlob());
+          copyBtn.textContent = t.copied;
+          setTimeout(() => { copyBtn.textContent = t.copy; }, 1600);
+        } catch (_) {
+          window.prompt(t.copy, linkBlob());
+        }
+      });
+    }
     setLang(detectLang());
   </script>
 </body>
