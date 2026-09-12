@@ -348,11 +348,11 @@
   </footer>
 
   <script>
-    /* Fill when the closed track is open. Empty → email only. */
     const LINKS = {
       email: "ipm.grp@googlemail.com",
-      group: "",
-      play: ""
+      group: "https://groups.google.com/g/hd_app_testers",
+      play: "https://play.google.com/apps/testing/dev.hdbridge.app",
+      extension: "https://ipmgroup.github.io/HD_extension/"
     };
 
     const I18N = {
@@ -361,21 +361,24 @@
         title: "HD Bridge — почему Human Design, и набор тестеров",
         mail: "Написать разработчику",
         group: "Вступить в группу",
-        play: "Стать тестером в Play"
+        play: "Стать тестером в Play",
+        extension: "Расширенный режим"
       },
       de: {
         jump: "Tester",
         title: "HD Bridge — warum Human Design, Tester gesucht",
         mail: "Entwickler schreiben",
         group: "Gruppe beitreten",
-        play: "Play-Tester werden"
+        play: "Play-Tester werden",
+        extension: "Erweiterter Modus"
       },
       en: {
         jump: "Testers",
         title: "HD Bridge — why Human Design, testers needed",
         mail: "Email the developer",
         group: "Join the group",
-        play: "Become a Play tester"
+        play: "Become a Play tester",
+        extension: "Extended mode"
       }
     };
 
@@ -397,6 +400,7 @@
       bits.push('<a class="btn" href="mailto:' + LINKS.email + '?subject=' + subject + '">' + t.mail + "</a>");
       if (LINKS.group) bits.push('<a class="btn secondary" href="' + LINKS.group + '">' + t.group + "</a>");
       if (LINKS.play) bits.push('<a class="btn secondary" href="' + LINKS.play + '">' + t.play + "</a>");
+      if (LINKS.extension) bits.push('<a class="btn secondary" href="' + LINKS.extension + '">' + t.extension + "</a>");
       document.getElementById("cta-buttons").innerHTML = bits.join("");
     }
 
